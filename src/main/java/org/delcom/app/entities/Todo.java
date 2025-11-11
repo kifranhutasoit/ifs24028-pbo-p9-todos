@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "todos")
-public class CashFlow {
+public class Todo {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -33,10 +33,10 @@ public class CashFlow {
     private LocalDateTime updatedAt;
 
     // Constructor, getter, setter
-    public CashFlow() {
+    public Todo() {
     }
 
-    public CashFlow(String title, String description, Boolean isFinished) {
+    public Todo(String title, String description, Boolean isFinished) {
         this.title = title;
         this.description = description;
         this.isFinished = isFinished;

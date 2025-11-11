@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.delcom.app.configs.ApiResponse;
-import org.delcom.app.entities.CashFlow;
-import org.delcom.app.services.CashFlowService;
+import org.delcom.app.entities.Todo;
+import org.delcom.app.services.TodoService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,23 +19,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/todos")
-public class CashFlowController {
-    private final CashFlowService todoService;
+public class TodoController {
+    private final TodoService todoService;
 
-    public CashFlowController(CashFlowService todoService) {
+    public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }
 
     // Menambahkan todo baru
     // -------------------------------
     @PostMapping
-    public ApiResponse<Map<String, UUID>> createTodo(@RequestBody CashFlow todo) {
+    public ApiResponse<Map<String, UUID>> createTodo(@RequestBody Todo todo) {
         if (todo.getTitle() == null || todo.getTitle().isEmpty() ||
                 todo.getDescription() == null || todo.getDescription().isEmpty()) {
             return new ApiResponse<>("fail", "Data tidak valid", null);
         }
 
-        CashFlow newTodo = todoService.createTodo(todo.getTitle(), todo.getDescription());
+        Todo newTodo = todoService.createTodo(todo.getTitle(), todo.getDescription());
         return new ApiResponse<Map<String, UUID>>(
                 "success",
                 "Todo berhasil dibuat",
@@ -45,8 +45,8 @@ public class CashFlowController {
     // Mendapatkan semua todo dengan opsi pencarian
     // -------------------------------
     @GetMapping
-    public ApiResponse<Map<String, List<CashFlow>>> getAllTodos(@RequestParam(required = false) String search) {
-        List<CashFlow> todos = todoService.getAllTodos(search);
+    public ApiResponse<Map<String, List<Todo>>> getAllTodos(@RequestParam(required = false) String search) {
+        List<Todo> todos = todoService.getAllTodos(search);
         return new ApiResponse<>(
                 "success",
                 "Daftar todo berhasil diambil",
@@ -56,8 +56,8 @@ public class CashFlowController {
     // Mendapatkan todo berdasarkan ID
     // -------------------------------
     @GetMapping("/{id}")
-    public ApiResponse<Map<String, CashFlow>> getTodoById(@PathVariable UUID id) {
-        CashFlow todo = todoService.getTodoById(id);
+    public ApiResponse<Map<String, Todo>> getTodoById(@PathVariable UUID id) {
+        Todo todo = todoService.getTodoById(id);
         if (todo == null) {
             return new ApiResponse<>(
                     "fail",
@@ -74,13 +74,13 @@ public class CashFlowController {
     // Memperbarui todo berdasarkan ID
     // -------------------------------
     @PutMapping("/{id}")
-    public ApiResponse<CashFlow> updateTodo(@PathVariable UUID id, @RequestBody CashFlow todo) {
+    public ApiResponse<Todo> updateTodo(@PathVariable UUID id, @RequestBody Todo todo) {
         if (todo.getTitle() == null || todo.getTitle().isEmpty() ||
                 todo.getDescription() == null || todo.getDescription().isEmpty()) {
             return new ApiResponse<>("fail", "Data tidak valid", null);
         }
 
-        CashFlow updatedTodo = todoService.updateTodo(id, todo.getTitle(), todo.getDescription(), todo.isFinished());
+        Todo updatedTodo = todoService.updateTodo(id, todo.getTitle(), todo.getDescription(), todo.isFinished());
         if (updatedTodo == null) {
             return new ApiResponse<>("fail", "Data todo tidak ditemukan", null);
         }

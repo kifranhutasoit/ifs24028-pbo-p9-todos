@@ -6,13 +6,13 @@ import static org.mockito.Mockito.when;
 
 import java.util.UUID;
 
-import org.delcom.app.entities.CashFlow;
-import org.delcom.app.repositories.CashFlowRepository;
+import org.delcom.app.entities.Todo;
+import org.delcom.app.repositories.TodoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class CashFlowServiceTest {
+public class TodoServiceTest {
     @Test
     @DisplayName("Pengujian untuk service Todo")
     void testTodoService() throws Exception {
@@ -21,15 +21,15 @@ public class CashFlowServiceTest {
         UUID nonexistentTodoId = UUID.randomUUID();
 
         // Membuat dummy data
-        CashFlow todo = new CashFlow("Belajar Spring Boot", "Belajar mock repository di unit test", false);
+        Todo todo = new Todo("Belajar Spring Boot", "Belajar mock repository di unit test", false);
         todo.setId(todoId);
 
         // Membuat mock TodoRepository
         // Buat mock
-        CashFlowRepository todoRepository = Mockito.mock(CashFlowRepository.class);
+        TodoRepository todoRepository = Mockito.mock(TodoRepository.class);
 
         // Atur perilaku mock
-        when(todoRepository.save(any(CashFlow.class))).thenReturn(todo);
+        when(todoRepository.save(any(Todo.class))).thenReturn(todo);
         when(todoRepository.findByKeyword("Belajar")).thenReturn(java.util.List.of(todo));
         when(todoRepository.findAll()).thenReturn(java.util.List.of(todo));
         when(todoRepository.findById(todoId)).thenReturn(java.util.Optional.of(todo));
@@ -39,12 +39,12 @@ public class CashFlowServiceTest {
         doNothing().when(todoRepository).deleteById(any(UUID.class));
 
         // Membuat instance service
-        CashFlowService todoService = new CashFlowService(todoRepository);
+        TodoService todoService = new TodoService(todoRepository);
         assert (todoService != null);
 
         // Menguji create todo
         {
-            CashFlow createdTodo = todoService.createTodo(todo.getTitle(), todo.getDescription());
+            Todo createdTodo = todoService.createTodo(todo.getTitle(), todo.getDescription());
             assert (createdTodo != null);
             assert (createdTodo.getId().equals(todoId));
             assert (createdTodo.getTitle().equals(todo.getTitle()));
@@ -68,7 +68,7 @@ public class CashFlowServiceTest {
 
         // Menguji getTodoById
         {
-            CashFlow fetchedTodo = todoService.getTodoById(todoId);
+            Todo fetchedTodo = todoService.getTodoById(todoId);
             assert (fetchedTodo != null);
             assert (fetchedTodo.getId().equals(todoId));
             assert (fetchedTodo.getTitle().equals(todo.getTitle()));
@@ -77,7 +77,7 @@ public class CashFlowServiceTest {
 
         // Menguji getTodoById dengan ID yang tidak ada
         {
-            CashFlow fetchedTodo = todoService.getTodoById(nonexistentTodoId);
+            Todo fetchedTodo = todoService.getTodoById(nonexistentTodoId);
             assert (fetchedTodo == null);
         }
 
@@ -87,7 +87,7 @@ public class CashFlowServiceTest {
             String updatedDescription = "Belajar mock repository di unit test dengan Mockito";
             Boolean updatedIsFinished = true;
 
-            CashFlow updatedTodo = todoService.updateTodo(todoId, updatedTitle, updatedDescription, updatedIsFinished);
+            Todo updatedTodo = todoService.updateTodo(todoId, updatedTitle, updatedDescription, updatedIsFinished);
             assert (updatedTodo != null);
             assert (updatedTodo.getTitle().equals(updatedTitle));
             assert (updatedTodo.getDescription().equals(updatedDescription));
@@ -100,7 +100,7 @@ public class CashFlowServiceTest {
             String updatedDescription = "Belajar mock repository di unit test dengan Mockito";
             Boolean updatedIsFinished = true;
 
-            CashFlow updatedTodo = todoService.updateTodo(nonexistentTodoId, updatedTitle, updatedDescription,
+            Todo updatedTodo = todoService.updateTodo(nonexistentTodoId, updatedTitle, updatedDescription,
                     updatedIsFinished);
             assert (updatedTodo == null);
         }

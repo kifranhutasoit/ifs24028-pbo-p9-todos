@@ -11,7 +11,7 @@ public class TodoTests {
     void testMembuatInstanceTodo() throws Exception {
         // Todo telah selesai
         {
-            CashFlow todo = new CashFlow("Testing Title", "Testing Description", false);
+            Todo todo = new Todo("Testing Title", "Testing Description", false);
 
             assert (todo.getTitle().equals("Testing Title"));
             assert (todo.getDescription().equals("Testing Description"));
@@ -20,7 +20,7 @@ public class TodoTests {
 
         // Todo belum selesai
         {
-            CashFlow todo = new CashFlow("Another Title", "Another Description", true);
+            Todo todo = new Todo("Another Title", "Another Description", true);
 
             assert (todo.getTitle().equals("Another Title"));
             assert (todo.getDescription().equals("Another Description"));
@@ -29,7 +29,7 @@ public class TodoTests {
 
         // Todo dengan nilai default
         {
-            CashFlow todo = new CashFlow();
+            Todo todo = new Todo();
 
             assert (todo.getId() == null);
             assert (todo.getTitle() == null);
@@ -39,7 +39,7 @@ public class TodoTests {
 
         // Todo dengan setNilai
         {
-            CashFlow todo = new CashFlow();
+            Todo todo = new Todo();
             UUID generatedId = UUID.randomUUID();
             todo.setId(generatedId);
             todo.setTitle("Set Title");
