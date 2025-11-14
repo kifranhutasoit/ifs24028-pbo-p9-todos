@@ -27,7 +27,6 @@ command with open jacoco: `mvn clean test && open target\site\jacoco\index.html`
 command with open jacoco: `mvn clean test && xdg-open target\site\jacoco\index.html`
 
 ### Menjalankan Aplikasi
--update
 
 Command: `mvn spring-boot:run`
 

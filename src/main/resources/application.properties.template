@@ -1,16 +1,11 @@
 spring.application.name=todo
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/db_target
-spring.datasource.username=postgres
-spring.datasource.password=postgres
+spring.datasource.url=jdbc:postgresql://localhost:5432/pbo_db_todos
+spring.datasource.username=
+spring.datasource.password=
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-
-# Gunakan ini untuk memperbarui skema database sesuai entitas
-spring.jpa.hibernate.ddl-auto=update 
-
-# Gunakan ini untuk membuat ulang skema database setiap kali aplikasi dijalankan
-# spring.jpa.hibernate.ddl-auto=create 
+spring.jpa.hibernate.ddl-auto=update
 
 # DevTools configuration
 spring.devtools.restart.enabled=true

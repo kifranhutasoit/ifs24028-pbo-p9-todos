@@ -1,5 +1,6 @@
 package org.delcom.app.configs;
 
+import org.delcom.app.configs.ApiResponseTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

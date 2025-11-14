@@ -8,12 +8,13 @@ POST {{BaseUrl}}/cash-flows
 Content-Type: application/json
 
 {
-    "type": "Outflow", // Inflow atau Outflow
-    "source": "Tabungan", // Sumber pemasukan atau pengeluaran
-    "label": "alat-elektronik", // Kategori atau label
-    "amount": 10000000, // Nominal uang yang masuk atau keluar
-    "description": "Kebutuhan komputer server" // Deskripsi tambahan
+    "type": "Outflow",
+    "source": "Tabungan Pribadi",
+    "label": "alat-elektronik",
+    "amount": 10000,
+    "description": "Kebutuhan komputer server"
 }
+###
 
 # Response Example: PostCashFlow
 {
@@ -30,7 +31,7 @@ GET {{BaseUrl}}/cash-flows
 ###
 
 # @name GetAllCashFlowsWithSearch
-GET {{BaseUrl}}/cash-flows?search=elektronik
+GET {{BaseUrl}}/cash-flows?search=Pribadi
 
 # Response Example: GetAllCashFlows && GetAllCashFlowsWithSearch
 {
@@ -63,10 +64,11 @@ GET {{BaseUrl}}/cash-flows?search=elektronik
 }
 ###
 
-@cashFlowId = {{GetAllCashFlows.response.body.data.cash_flows[0].id}}
+@cashFlowId = {{GetAllCashFlows.response.body.data.cashFLows[0].id}}
 
 # @name GetCashFlowById
 GET {{BaseUrl}}/cash-flows/{{cashFlowId}}
+###
 
 # Response Example: GetCashFlowById
 {
@@ -90,6 +92,7 @@ GET {{BaseUrl}}/cash-flows/{{cashFlowId}}
 
 # @name GetCashFlowLabels
 GET {{BaseUrl}}/cash-flows/labels
+###
 
 # Response Example: GetCashFlowLabels
 {
@@ -116,6 +119,7 @@ Content-Type: application/json
     "amount": 5000000,
     "description": "Pendapatan dari proyek freelance pengembangan web."
 }
+###
 
 # Response Example: PutCashFlowById
 {
@@ -126,6 +130,7 @@ Content-Type: application/json
 
 # @name DeleteCashFlowById
 DELETE {{BaseUrl}}/cash-flows/{{cashFlowId}}
+###
 
 # Response Example: DeleteCashFlowById
 {
