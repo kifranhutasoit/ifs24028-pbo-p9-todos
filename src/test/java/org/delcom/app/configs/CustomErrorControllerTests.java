@@ -1,10 +1,8 @@
 package org.delcom.app.configs;
 
-import org.delcom.app.configs.CustomErrorControllerTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.webmvc.error.ErrorAttributes;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +15,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomErrorControllerTests {
+class CustomErrorControllerTest {
 
         @Test
         @DisplayName("Mengembalikan response error dengan status 500")

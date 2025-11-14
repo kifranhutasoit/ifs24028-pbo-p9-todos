@@ -8,7 +8,7 @@ POST {{BaseUrl}}/cash-flows
 Content-Type: application/json
 
 {
-    "type": "Outflow",
+    "type": "OUTFLOW",
     "source": "Tabungan Pribadi",
     "label": "alat-elektronik",
     "amount": 10000,
@@ -64,7 +64,7 @@ GET {{BaseUrl}}/cash-flows?search=Pribadi
 }
 ###
 
-@cashFlowId = {{GetAllCashFlows.response.body.data.cashFLows[0].id}}
+@cashFlowId = {{GetAllCashFlows.response.body.data.cash_flows[0].id}}
 
 # @name GetCashFlowById
 GET {{BaseUrl}}/cash-flows/{{cashFlowId}}
@@ -113,7 +113,7 @@ PUT {{BaseUrl}}/cash-flows/{{cashFlowId}}
 Content-Type: application/json
 
 {
-    "type": "Inflow",
+    "type": "INFLOW",
     "source": "Freelance Project",
     "label": "proyek-freelance",
     "amount": 5000000,

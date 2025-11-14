@@ -10,7 +10,6 @@
 
 - Melakukan inisialisasi proyek
 
-
 ## Syntax
 
 ### Melakukan Instal Ulang Kebutuhan Paket

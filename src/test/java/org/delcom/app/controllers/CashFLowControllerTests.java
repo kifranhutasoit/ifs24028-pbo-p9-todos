@@ -14,7 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class CashFlowControllerTests {
+public class CashFLowControllerTests {
     @Test
     @DisplayName("Pengujian untuk controller CashFlow")
     void testCashFlowController() throws Exception {
