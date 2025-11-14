@@ -14,7 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class CashFLowControllerTests {
+public class CashFlowControllerTests {
     @Test
     @DisplayName("Pengujian untuk controller CashFlow")
     void testCashFlowController() throws Exception {
@@ -93,7 +93,7 @@ public class CashFLowControllerTests {
             ApiResponse<Map<String, CashFlow>> result = cashFlowController.getCashFlowById(cashFlowId);
             assert (result != null);
             assert (result.getStatus().equals("success"));
-            assert (result.getData().get("cash_flow").getId().equals(cashFlowId));
+            assert (result.getData().get("cashFlow").getId().equals(cashFlowId));
         }
 
         // Menguji getCashFlowById dengan ID yang tidak ada
